@@ -1,0 +1,7 @@
+#!/usr/bin/perl -w
+$DNA='AAGGTTCGTAGACGTGCGATG';
+print "$DNA\n\n";
+$revcom=reverse $DNA;
+$revcom=~tr/ACGTacgt/TGCAtgca/;
+print "$revcom\n";
+exit;
