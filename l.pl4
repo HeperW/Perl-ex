@@ -1,0 +1,15 @@
+#read file
+#!/usr/bin/perl -w
+open my $PROTEINFILE,'<',$proteinfilename or die
+"$0:failed to open input file'$proteinfilename':$!\n";
+
+close $PROTEINFILE or warn
+"$0:failed to close input file'$proteinfilename':$!/n";
+#get write file 
+open my $FH_OUT,'>',$fn_out or die 
+"$0:failed to open output file'$fn_out':$!\n";
+
+close $FH_OUT or warn
+"$0:failed to close output file'$fn_out':$!/n";
+exit;
+
