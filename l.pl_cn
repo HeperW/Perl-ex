@@ -16,20 +16,20 @@ $count_of_C=0;
 $count_of_G=0;
 $count_of_T=0;
 $errors    =0;
-foreach $base (@DNA){
-  if($base eq 'A'){
+foreach  (@DNA){
+  if( /A/){
    ++$count_of_A;
 }
-elsif($base eq 'C'){
+elsif(/C/){
 
    ++$count_of_C;
     
 }
- elsif($base eq 'G'){
+ elsif(/G/){
      ++$count_of_G;
 
 }
- elsif($base eq 'T'){
+ elsif(/T/){
        ++$count_of_T;
   
 }
