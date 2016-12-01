@@ -2,9 +2,13 @@
 print "Please type the filename of the DNA sequence data: ";
 $dna_filename=<STDIN>;
 chomp $dna_filename;
-unless (open(DNAFILE,$dna_filename)){
+unless(-e $dna_filename){
     print "Cannot open file \"#dna_filename\"\n\n ";
    exit;
+}
+unless (open(DNAFILE,$dna_filename)){
+ print "File \"$dna_filename\" does not exist!!\n";
+ exit;
 }
 @DNA=<DNAFILE>;
 close DNAFILE;
@@ -16,20 +20,21 @@ $count_of_C=0;
 $count_of_G=0;
 $count_of_T=0;
 $errors    =0;
-foreach  (@DNA){
-  if( /A/){
+for ($position=0;$position<length $DNA;++$position,) {
+  $base=substr($DNA,$position,1);
+  if($base eq "A"){
    ++$count_of_A;
 }
-elsif(/C/){
+elsif($base eq "C"){
 
    ++$count_of_C;
     
 }
- elsif(/G/){
+elsif($base eq "G"){
      ++$count_of_G;
 
 }
- elsif(/T/){
+ elsif($base eq "T"){
        ++$count_of_T;
   
 }
@@ -41,8 +46,8 @@ else{
 
 
  print "A=$count_of_A\n";
- print "A=$count_of_C\n";
- print "A=$count_of_G\n";
- print "A=$count_of_T\n";
+ print "C=$count_of_C\n";
+ print "G=$count_of_G\n";
+ print "T=$count_of_T\n";
  print "errors=$errors\n";
 exit;
