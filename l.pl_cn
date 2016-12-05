@@ -15,39 +15,24 @@ close DNAFILE;
 $DNA=join('',@DNA);
 $DNA=~s/\s//g;
 @DNA=split ('',$DNA);
-$count_of_A=0;
-$count_of_C=0;
-$count_of_G=0;
-$count_of_T=0;
-$errors    =0;
-for ($position=0;$position<length $DNA;++$position,) {
-  $base=substr($DNA,$position,1);
-  if($base eq "A"){
-   ++$count_of_A;
-}
-elsif($base eq "C"){
+$a=0;
+$c=0;
+$g=0;
+$t=0;
+$e=0;
+while($DNA=~/a/ig)         {$a++}
+while($DNA=~/c/ig)         {$c++}
+while($DNA=~/g/ig)         {$g++}
+while($DNA=~/t/ig)         {$t++}
+while($DNA=~/[^acgt]/ig)   {$e++}
 
-   ++$count_of_C;
-    
-}
-elsif($base eq "G"){
-     ++$count_of_G;
+print "A=$a C=$c G=$g T=$t errors=$e\n";
 
+$outputfile="countbase";
+unless (open(COUNTBASE,">$outputfile")){
+    print"Cannot open file \"$outputfile\" to write to!!\n\n";
+   exit;
 }
- elsif($base eq "T"){
-       ++$count_of_T;
-  
-}
-else{ 
- print "!!!!Error -I do not recognize this base:$base\n";
-    ++$errors;
-   }
-}
-
-
- print "A=$count_of_A\n";
- print "C=$count_of_C\n";
- print "G=$count_of_G\n";
- print "T=$count_of_T\n";
- print "errors=$errors\n";
+print COUNTBASE "A=$a C=$c G=$g T=$t errors=$e\n";
+close (COUNTBASE);
 exit;
