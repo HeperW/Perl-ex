@@ -1,0 +1,10 @@
+#!usr/bin/perl -w
+my $dna='ACGT';
+my $previousbase='CG';
+for ($i=0;$i<length($dna);$i++){
+  $b2=substr($dna,$i,2);
+  if($b2 eq $previousbase){
+    print "$dna,$i\n";
+}
+}
+exit;
