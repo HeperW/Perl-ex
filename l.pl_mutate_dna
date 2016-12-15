@@ -1,0 +1,23 @@
+#!usr/bin/perl
+use warnings;
+use strict;
+use sub_mutate;
+use sub_randomelement;
+use sub_randomnucleotide;
+use sub_randomposition;
+
+
+my $DNA = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+my $i;
+my $mutant;
+srand(time | $$);
+$mutant = mutate($DNA);
+print "\nMutate dna\n\n";
+print "\nHere is the original DNA:\n\n";
+print "$DNA\n";
+print "\nHere are 10 more successive mutations:\n\n";
+   for ($i=0;$i<10;++$i){
+     $mutant = mutate($mutant);
+   print "$mutant\n";
+}
+exit;
