@@ -1,0 +1,46 @@
+#!/usr/bin/perl 
+use strict;
+use warnings;
+use lib '~/Perl-ex';
+use make_random_DNA_set;
+use randomlength;
+use make_random_DNA;
+use randomnucleotide;
+use randomelement;
+my $percent;
+my @percentages;
+my $result;
+my @random_DNA=();
+srand( time | $$);
+@random_DNA=make_random_DNA_set(10,10,10);
+for (my $k=0;$k<scalar @random_DNA-1;++$k){
+  for (my $i=($k+1);$i<scalar @random_DNA;++$i){
+    $percent=matching_percentage($random_DNA[$k],$random_DNA[$i]);
+    push (@percentages,$percent);}
+}
+$result=0;
+foreach $percent (@percentages){
+     $result+=$percent;
+}
+$percent=$percent/scalar(@percentages);
+$result =int($result*100);
+print"in this run of the experiment,the average percentage of\n";
+print"matchong position is $result%\n\n";
+exit;
+
+sub matching_percentage{
+    my($string1,$string2)=@_;
+    my($length)=length($string1);
+    my($position);
+    my($count)=0;
+      for ( $position = 0; $position<$length; ++$position ){
+      if(
+          substr($string1,$position,1) eq substr($string2,$position,1)
+        )
+      {
+        ++$count;
+     }
+  }
+    return $count/$length;
+}
+
