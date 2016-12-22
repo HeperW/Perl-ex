@@ -1,0 +1,27 @@
+#!usr/bin/perl 
+use strict;
+use warnings;
+use lib;
+use make_random_DNA_set;
+use randomlength;
+use make_random_DNA;
+use randomnucleotide;
+use randomelement;
+
+my $size_of_set   =12;
+my $maximum_length =30;
+my $minimum_length  =15;
+my @random_DNA= ();
+srand(time | $$);
+@random_DNA=make_random_DNA_set($minimum_length,$maximum_length,$size_of_set);
+print "Here is an array of $size_of_set randomly generated DNA sequence\n";
+print "with lengths between $minimum_length and $maximum_length and $minimum_length:\n\n";
+foreach my $dna (@random_DNA){
+     print  "$dna\n";
+}
+print"\n";
+exit;
+
+
+
+
