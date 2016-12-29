@@ -4,6 +4,6 @@ sub make_random_DNA{
     for (my $i=0;$i<$length;++$i){
     $dna.=randomnucleotide();
 }
-  return;
+  return $dna;
 }
 1;
