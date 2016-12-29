@@ -22,7 +22,7 @@ $result=0;
 foreach $percent (@percentages){
      $result+=$percent;
 }
-$percent=$percent/scalar(@percentages);
+$result=$result/scalar(@percentages);
 $result =int($result*100);
 print"in this run of the experiment,the average percentage of\n";
 print"matchong position is $result%\n\n";
